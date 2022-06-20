@@ -22,8 +22,9 @@ function App() {
   }
 
   function handleDeleteCard(deletedCard) {
-    const updatedCards = cards.filter((card) => card.id !== deletedCard.id);
+    const updatedCards = fullCards.filter((card) => card.id !== deletedCard.id);
     setCards(updatedCards);
+    setFullCards(updatedCards);
   }
 
   function handleSearchChange(event) {
