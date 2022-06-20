@@ -33,7 +33,7 @@ function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setCards(fullCards.filter(card => card.description.includes(search)));
+    setCards(fullCards.filter(card => card.description.toLowerCase().includes(search.toLowerCase())));
   }
 
   return (
