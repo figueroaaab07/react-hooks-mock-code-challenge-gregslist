@@ -1,8 +1,10 @@
 import React from "react";
 
 function ListingCard({ card, isFavorite, onClickFavorite, onDeleteCard }) {
+  const {id, description, image, location} = card;
+
   function handleDeleteClick() {
-    fetch(`http://localhost:6001/listings/${card.id}`, {
+    fetch(`http://localhost:6001/listings/${id}`, {
       method: "DELETE",
     })
       .then((r) => r.json())
@@ -13,16 +15,16 @@ function ListingCard({ card, isFavorite, onClickFavorite, onDeleteCard }) {
     <li className="card">
       <div className="image">
         <span className="price">$0</span>
-        <img src={card.image} alt={card.description} />
+        <img src={image} alt={description} />
       </div>
       <div className="details">
-        {(isFavorite.includes(card.id.toString())) ? (
-          <button id={card.id} className="emoji-button favorite active" onClick={onClickFavorite}>★</button>
+        {(isFavorite.includes(id.toString())) ? (
+          <button id={id} className="emoji-button favorite active" onClick={onClickFavorite}>★</button>
         ) : (
-          <button id={card.id} className="emoji-button favorite" onClick={onClickFavorite}>☆</button>
+          <button id={id} className="emoji-button favorite" onClick={onClickFavorite}>☆</button>
         )}
-        <strong>{card.description}</strong>
-        <span> · {card.location}</span>
+        <strong>{description}</strong>
+        <span> · {location}</span>
         <button className="emoji-button delete" onClick={handleDeleteClick}>🗑</button>
       </div>
     </li>
